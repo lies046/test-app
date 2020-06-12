@@ -25,9 +25,9 @@
         </li>
         <% end %>
       </ul>
-      <form class="form-inline mt-2 mt-md-0">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">投稿</button>
-      </form>
+      <% if user_signed_in?%>
+        <%= link_to "投稿", new_post_path, class:"btn btn-outline-success my-2 my-sm-0" %>
+      <% end %>
     </div>
   </nav>
 </header>

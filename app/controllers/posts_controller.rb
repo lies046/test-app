@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
 
   def show
     @post = Post.find(params[:id])
@@ -20,6 +21,6 @@ class PostsController < ApplicationController
 
   private
     def post_params
-      params.require(:post).permit(:user_id,:content, category_ids: [])
+      params.require(:post).permit(:content, category_ids: []).merge(user_id: current_user.id)
     end
 end
