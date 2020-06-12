@@ -1,5 +1,9 @@
 class PostsController < ApplicationController
 
+  def show
+    @post = Post.find(params[:id])
+  end
+
   def new
     @post = Post.new
   end
@@ -8,7 +12,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
 
     if @post.save
-      redirect_to root_path
+      redirect_to post_path(@post.id)
     else
       render :new
     end
@@ -16,6 +20,6 @@ class PostsController < ApplicationController
 
   private
     def post_params
-      params.require(:post).permit(:body)
+      params.require(:post).permit(:user_id,:content, category_ids: [])
     end
 end
