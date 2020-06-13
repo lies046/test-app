@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row"> 
+    <% @post.each do |post|%>
+      <div class="col-4">
+        <div class="card border-primary mb-3" style="max-width: 18rem;">
+          <%= link_to post_path(post.id) do %>
+            <div class="card-header"><%= post.post.title %></div>
+              <div class="card-body text-primary">
+                <p class="card-text"><%= post.created_at.strftime("%Y/%m/%d %H:%M") %></p>
+              </div>
+              <% end %>
+              <%= link_to user_path(post.post.user.id) do %>
+              <div class="card-header"><%= post.post.user.username %></div>
+              <% end %>
+            </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

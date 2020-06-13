@@ -1,1 +1,4 @@
 <%= @post.content %>
+<% @post.post_category_relations.each do |categories| %>
+  <%= categories.category.name%>
+<% end %>
