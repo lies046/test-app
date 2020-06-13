@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root "top#index"
 
   resources :posts, except: [:index]
+  resources :users
 end
